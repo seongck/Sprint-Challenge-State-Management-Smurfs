@@ -1,6 +1,7 @@
 const initialState = {
   smurfs: [],
   isFetching: false,
+  isPosting: false,
   error: ""
 };
 
