@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+
+import { postSmurf } from "../actions";
 
 const SmurfForm = props => {
   const [formData, setFormData] = useState({});
@@ -35,30 +38,52 @@ const SmurfForm = props => {
   };
 
   return (
-    <>
-      <form>
+    <div>
+      <form
+        onSubmit={handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center"
+        }}
+      >
         <input
           type="text"
           name="name"
           value={formData.name}
-          onClick={handleNameChanges}
+          onChange={handleNameChanges}
+          placeholder="Name"
         />
         <input
           type="number"
           name="age"
-          value={formData.name}
-          onClick={handleAgeChanges}
+          value={formData.age}
+          onChange={handleAgeChanges}
+          placeholder="Age"
         />
         <input
           type="text"
-          name="name"
+          name="height"
           value={formData.height}
-          onClick={handleHeightChanges}
+          onChange={handleHeightChanges}
+          placeholder="Height"
         />
-        <button onSubmit={handleSubmit}></button>
+        <button>Add Smurf</button>
       </form>
-    </>
+    </div>
   );
 };
 
-export default SmurfForm;
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfListReducer.smurfs,
+    isPosting: state.smurfFormReducer.isPosting,
+    error: state.smurfFormReducer.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { postSmurf }
+)(SmurfForm);
