@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 
-function SmurfList(props) {
+import { fetchSmurfs } from "../actions";
+
+function SmurfList({ fetchSmurfs, isFetching, smurfs, error }) {
+  useEffect(() => {
+    fetchSmurfs();
+  }, [fetchSmurfs]);
+
+  if (isFetching) {
+    return <h2> Fetching Smurfs... </h2>;
+  }
+
   return (
     <div>
       <h2>Smurf List</h2>
-      {props.smurfs.map(smurf => {
+      {smurfs.map(smurf => {
         return (
           <div key={smurf.id}>
             <p>Name: {smurf.name}</p>
@@ -17,4 +28,15 @@ function SmurfList(props) {
   );
 }
 
-export default SmurfList;
+const mapStateToProps = state => {
+  return {
+    isFetching: state.smurfListReducer.isFetching,
+    smurfs: state.smurfListReducer.smurfs,
+    error: state.smurfListReducer.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchSmurfs }
+)(SmurfList);
