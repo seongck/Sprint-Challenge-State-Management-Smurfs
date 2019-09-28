@@ -27,7 +27,7 @@ export const postSmurf = smurfData => {
   return function(dispatch, smurfData) {
     dispatch({ type: POST_SMURF_START });
     axios
-      .post("http://localhost:3333/smurfs")
+      .post("http://localhost:3333/smurfs", smurfData)
       .then(res => {
         console.log("reducers/index.js: post res: ", res);
         dispatch({ type: POST_SMURF_SUCCESS, payload: res });
