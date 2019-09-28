@@ -24,6 +24,7 @@ export const fetchSmurfs = () => {
 };
 
 export const postSmurf = smurfData => {
+  console.log("postSmurf: smurfData: ", smurfData);
   return function(dispatch, smurfData) {
     dispatch({ type: POST_SMURF_START });
     axios

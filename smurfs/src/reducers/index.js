@@ -16,6 +16,11 @@ const initialState = {
   error: ""
 };
 
+//const initialStateForm = {
+//  isPosting: false,
+//  error: ""
+//};
+
 export const smurfListReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SMURFS_START:
