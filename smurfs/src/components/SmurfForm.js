@@ -16,7 +16,7 @@ const SmurfForm = props => {
   const handleAgeChanges = e => {
     setFormData({
       ...formData,
-      age: e.target.value
+      age: Number(e.target.value)
     });
   };
 
