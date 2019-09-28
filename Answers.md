@@ -14,16 +14,18 @@ Reducers are pure functions that receive an action and current state as argument
 and return a new (updated) state. The new state is sent to our store.  
 
 Store is an object that holds all of our application level state. The store is
-known as a 'single source of truth' because its a single object contains all of
-our application level state and it is immutable. 
+known as a 'single source of truth' because its a single object that contains all of
+our application level state and is immutable. 
 
 1. What is the difference between Application state and Component state? When would be a good time to use one over the other?
 
 Application state is state that needs to be global and accessed by multiple
-components in our app.
+components in our app.  We would use app state when the state needs to be
+accessed by multiple components.
 
 Component state is state that is only needed by that component and doesn't
-affect the rest of our application.
+affect the rest of our application. We would use component state when the rest
+of our app doesn't need access to this data.
 
 1. Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
 
