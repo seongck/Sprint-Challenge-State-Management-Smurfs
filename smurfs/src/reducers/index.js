@@ -42,7 +42,7 @@ export const smurfReducer = (state = initialState, action) => {
     case POST_SMURF_SUCCESS:
       return {
         ...state,
-        smurfs: action.payload.data,
+        smurfs: action.payload,
         isPosting: false,
         error: ""
       };
