@@ -1,5 +1,3 @@
-import { combineReducers } from "redux";
-
 import {
   FETCH_SMURFS_START,
   FETCH_SMURFS_SUCCESS,
@@ -16,12 +14,7 @@ const initialState = {
   error: ""
 };
 
-//const initialStateForm = {
-//  isPosting: false,
-//  error: ""
-//};
-
-export const smurfListReducer = (state = initialState, action) => {
+export const smurfReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SMURFS_START:
       return {
@@ -41,13 +34,6 @@ export const smurfListReducer = (state = initialState, action) => {
         error: action.payload,
         isFetching: false
       };
-    default:
-      return state;
-  }
-};
-
-export const smurfFormReducer = (state = initialState, action) => {
-  switch (action.type) {
     case POST_SMURF_START:
       return {
         ...state,
@@ -56,7 +42,7 @@ export const smurfFormReducer = (state = initialState, action) => {
     case POST_SMURF_SUCCESS:
       return {
         ...state,
-        smurfs: action.payload,
+        smurfs: action.payload.data,
         isPosting: false,
         error: ""
       };
@@ -71,7 +57,4 @@ export const smurfFormReducer = (state = initialState, action) => {
   }
 };
 
-export default combineReducers({
-  smurfListReducer,
-  smurfFormReducer
-});
+export default smurfReducer;

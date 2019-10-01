@@ -30,9 +30,9 @@ function SmurfList({ fetchSmurfs, isFetching, smurfs, error }) {
 
 const mapStateToProps = state => {
   return {
-    isFetching: state.smurfListReducer.isFetching,
-    smurfs: state.smurfListReducer.smurfs,
-    error: state.smurfListReducer.error
+    isFetching: state.isFetching,
+    smurfs: state.smurfs,
+    error: state.error
   };
 };
 

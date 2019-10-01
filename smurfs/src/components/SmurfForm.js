@@ -29,7 +29,7 @@ const SmurfForm = props => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    props.postSmurf({ ...formData, id: props.smurfs.length });
+    props.postSmurf(formData);
     setFormData({
       name: "",
       age: "",
@@ -77,9 +77,9 @@ const SmurfForm = props => {
 
 const mapStateToProps = state => {
   return {
-    smurfs: state.smurfListReducer.smurfs,
-    isPosting: state.smurfFormReducer.isPosting,
-    error: state.smurfFormReducer.error
+    smurfs: state.smurfs,
+    isPosting: state.isPosting,
+    error: state.error
   };
 };
 
